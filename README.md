@@ -1,2 +1,2 @@
 # Freightera-Job-Interview-Assignment
-Assignment for a Freightera internship
+Assignment for a Freightera internship.
