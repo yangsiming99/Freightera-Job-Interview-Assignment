@@ -16,7 +16,6 @@ export default class SearchBar extends Component {
                         value = {this.props.value}
                         data = {this.props.data}
                         changeHandler = {this.props.changeHandler}
-                        clickHandler = {this.props.clickHandler}
                         fillHandler = {this.props.fillHandler}
                         />
                 </Navbar>

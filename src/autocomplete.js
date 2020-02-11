@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactAutocomplete from 'react-autocomplete';
-import { Form } from 'reactstrap';
 
 export default class AutoComplete extends Component {
 
@@ -19,10 +18,10 @@ export default class AutoComplete extends Component {
 				autocompleteList.push({
 					id: `${this.props.data[i].CityName}, ${this.props.data[i].province}`,
 					label: `${this.props.data[i].CityName}, ${this.props.data[i].province}`,
-				})
+				});
 			}
 			if(JSON.stringify(autocompleteList) !== JSON.stringify(this.state.apiList)){
-				this.setState({apiList: autocompleteList})
+				this.setState({apiList: autocompleteList});
 			}
 		}
 	}
@@ -30,7 +29,7 @@ export default class AutoComplete extends Component {
 	render() {
 		let menuStyleSheet;
 		if(this.props.data.length === 0){
-			menuStyleSheet = {display: "none"}
+			menuStyleSheet = {display: "none"};
 		}
 		else{
 			menuStyleSheet = {
@@ -38,12 +37,14 @@ export default class AutoComplete extends Component {
 				boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
 				background: 'rgba(255, 255, 255, 1)',
 				padding: '2px 0',
-				fontSize: '90%',
+				fontSize: '100%',
 				position: 'fixed',
 				overflow: 'auto',
 				maxHeight: '50%',
 				zIndex: '2',
-			  }
+				paddingLeft: "10px",
+				paddingRight:"10px",
+			  };
 		}
 		return (
 			<div style={{ width: "100%" }}>
@@ -61,11 +62,10 @@ export default class AutoComplete extends Component {
 					}
 					renderInput={(props) => {
 						return (
-							<Form onSubmit={this.props.clickHandler}>
 								<input className="form-control"
-								placeholder="Enter a location"
-								style={{ width: "100%" }} {...props} />
-							</Form>
+									placeholder="Enter a location"
+									style={{ width: "100%" }} {...props} 
+								/>
 							)
 					}}
 					wrapperStyle={

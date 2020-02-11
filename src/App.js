@@ -8,7 +8,6 @@ export default class App extends Component {
 		super(props)
 		this.fetchData = this.fetchData.bind(this);
 		this.handleFill = this.handleFill.bind(this);
-		this.handleClick = this.handleClick.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		
 		this.state = {
@@ -19,7 +18,7 @@ export default class App extends Component {
 	}
 
 	componentDidUpdate(){
-		this.fetchData()
+		this.fetchData();
 	}
 
 	fetchData() {
@@ -28,33 +27,29 @@ export default class App extends Component {
 				.then((response) => response.json())
 				.then((data) => {
 					if (data) {
-						// Used to remove the Warning Alert if an Warning Alert happened
+						// Used to remove the Warning Alert when data isn't false
 						if (this.state.apiData.length === 0 || this.state.error === true) {
-							this.setState({ apiData: data, error: false })
+							this.setState({ apiData: data, error: false });
 						}
+						// used to update apidata if state data is different from fetched data
 						else if (JSON.stringify(this.state.apiData) !== JSON.stringify(data)) {
-							this.setState({ apiData: data, error: false })
+							this.setState({ apiData: data, error: false });
 						}
 					}
+					// switches alert from warning to no location selected
 					else if (!data && this.state.apiData.length !== 0) {
-						this.setState({ apiData: [], error: true })
+						this.setState({ apiData: [], error: true });
 					}
 
 				})
 		}
 		else if(this.state.error){
-			console.log("hi")
-			this.setState({error: false})
+			this.setState({error: false});
 		}
 	}
 
 	handleFill(fillValue) {
 		this.setState({value: fillValue});
-	}
-
-	handleClick(e) {
-		e.preventDefault();
-		this.fetchData();
 	}
 
 	handleChange(event) {
@@ -68,7 +63,6 @@ export default class App extends Component {
 				value = {this.state.value}
 				data = {this.state.apiData} 
 				changeHandler = {this.handleChange} 
-				clickHandler = {this.handleClick} 
 				fillHandler = {this.handleFill}
 				/>
 			<TableList 

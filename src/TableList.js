@@ -9,13 +9,13 @@ export default class TableList extends Component {
             alert = (
             <Alert style={{margin:"10px", backgroundColor:"#6fbc2e"}}>
                 No Location Selected
-            </Alert>)
+            </Alert>);
         }
         else if(this.props.error === true){
             alert = (
             <Alert style={{margin:"10px"}} color="danger">
                 No Locations Found
-            </Alert>)
+            </Alert>);
         }
         
         return(
