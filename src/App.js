@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import SearchBar from './searchbar';
+import NaviagationBar from './searchbar';
 import TableList from './TableList';
+import SearchBar from './autocomplete';
 
 export default class App extends Component {
 
@@ -59,12 +60,14 @@ export default class App extends Component {
     render(){
       return(
         <div>
-			<SearchBar 
-				value = {this.state.value}
-				data = {this.state.apiData} 
-				changeHandler = {this.handleChange} 
-				fillHandler = {this.handleFill}
+			<NaviagationBar>
+				<SearchBar 
+					value = {this.state.value}
+					data = {this.state.apiData}
+					changeHandler = {this.handleChange}
+					fillHandler = {this.handleFill}
 				/>
+			</NaviagationBar>
 			<TableList 
 				value={this.state.value}
 				apiData={this.state.apiData}
